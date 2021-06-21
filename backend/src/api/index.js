@@ -1,8 +1,10 @@
 const Router = require('koa-router');
 const posts = require('./posts');
+const bodyParser = require('koa-bodyparser');
 
 const api = new Router();
 
+api.use(bodyParser());
 api.use('/posts', posts.routes());
 
 api.get('/', (ctx) => {
