@@ -6,6 +6,7 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "esm": "^3.2.25",
     "koa": "^2.13.1",
     "koa-body": "^2.5.0",
     "koa-bodyparser": "^4.3.0",
@@ -17,7 +18,7 @@
     "eslint": "^7.28.0"
   },
   "scripts": {
-    "start": "node src",
-    "start:dev": "nodemon --watch src/ src/index.js"
+    "start": "node src -r esm src",
+    "start:dev": "nodemon --watch src/ -r esm src/index.js"
   }
 }

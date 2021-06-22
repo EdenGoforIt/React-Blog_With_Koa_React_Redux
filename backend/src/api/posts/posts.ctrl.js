@@ -3,7 +3,7 @@ let postId = 1;
 const posts = [{ id: 1, title: 'title', body: 'content' }];
 
 //post
-exports.write = (ctx) => {
+export const write = (ctx) => {
   const { title, body } = ctx.request.body;
   postId++;
   const post = { id: postId, title, body };
@@ -12,12 +12,12 @@ exports.write = (ctx) => {
 };
 
 //get lists
-exports.list = (ctx) => {
+export const list = (ctx) => {
   ctx.body = posts;
 };
 
 //get a post
-exports.read = (ctx) => {
+export const read = (ctx) => {
   const { id } = ctx.params;
   const post = posts.find((p) => p.id.toString() === id);
   if (!post) {
@@ -31,7 +31,7 @@ exports.read = (ctx) => {
 };
 
 //delete a post
-exports.remove = (ctx) => {
+export const remove = (ctx) => {
   const { id } = ctx.params;
   const index = posts.findIndex((p) => p.id.toString() === id);
   if (index === -1) {
@@ -46,7 +46,7 @@ exports.remove = (ctx) => {
 };
 
 //edit the post
-exports.replace = (ctx) => {
+export const replace = (ctx) => {
   const { id } = ctx.params;
   const index = posts.findIndex((p) => p.id.toString() === id);
 
