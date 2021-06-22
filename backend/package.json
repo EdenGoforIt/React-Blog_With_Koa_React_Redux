@@ -4,11 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "koa": "^2.13.1",
     "koa-body": "^2.5.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0",
+    "mongoose": "^5.12.14",
     "nodemon": "^2.0.7"
   },
   "devDependencies": {
