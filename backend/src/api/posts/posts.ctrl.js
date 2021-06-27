@@ -1,83 +1,64 @@
-let postId = 1;
+import Post from '../../models/post';
 
-const posts = [{ id: 1, title: 'title', body: 'content' }];
-
-//post
-export const write = (ctx) => {
-  const { title, body } = ctx.request.body;
-  postId++;
-  const post = { id: postId, title, body };
-  posts.push(post);
-  ctx.body = post;
-};
-
-//get lists
-export const list = (ctx) => {
-  ctx.body = posts;
-};
-
-//get a post
-export const read = (ctx) => {
-  const { id } = ctx.params;
-  const post = posts.find((p) => p.id.toString() === id);
-  if (!post) {
-    ctx.status = 404;
-    ctx.body = {
-      message: 'No Post Found',
-    };
-    return;
+export const write = async (ctx) => {
+  const { title, body, tags } = ctx.request.body;
+  const post = new Post({
+    title,
+    body,
+    tags,
+  });
+  try {
+    await post.save();
+    ctx.body = post;
+  } catch (error) {
+    ctx.throw(500, error);
   }
-  ctx.body = post;
 };
 
-//delete a post
-export const remove = (ctx) => {
-  const { id } = ctx.params;
-  const index = posts.findIndex((p) => p.id.toString() === id);
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      error: 'Post Not Found',
-    };
-    return;
+export const list = async (ctx) => {
+  try {
+    const posts = await Post.find().exec();
+    ctx.body = posts;
+  } catch (error) {
+    ctx.throw(500, error);
   }
-  posts.splice(index, 1);
-  ctx.status = 204;
 };
 
-//edit the post
-export const replace = (ctx) => {
-  const { id } = ctx.params;
-  const index = posts.findIndex((p) => p.id.toString() === id);
-
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      error: 'Post Not Found',
-    };
-    return;
+export const read = async (ctx) => {
+  try {
+    const { id } = ctx.params;
+    const post = Post.findById(id).exec();
+    if (!post) {
+      ctx.status = 404;
+      return;
+    }
+  } catch (error) {
+    ctx.throw(500, error);
   }
-  posts[index] = {
-    id,
-    ...ctx.request.body,
-  };
-  ctx.body = posts[index];
 };
 
-//patch or modify the specific field of the post
-exports.update = (ctx) => {
+export const remove = async (ctx) => {
   const { id } = ctx.params;
-  const index = posts.findIndex((p) => p.id.toString() === id);
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      message: 'Post Not Found',
-    };
-    return;
+  try {
+    await Post.findByIdAndRemove(id).exec();
+    ctx.status = 204;
+  } catch (error) {
+    ctx.throw(500, error);
   }
-  posts[index] = {
-    ...posts[index],
-    ...ctx.request.body,
-  };
-  ctx.body = posts[index];
+};
+
+export const update = async (ctx) => {
+  const { id } = ctx.params;
+  try {
+    const post = await Post.findByIdAndUpdate(id, ctx.rquest.body, {
+      new: true,
+    });
+    if (!post) {
+      ctx.status = 404;
+      return;
+    }
+    ctx.body = post;
+  } catch (error) {
+    ctx.throw(500, error);
+  }
 };

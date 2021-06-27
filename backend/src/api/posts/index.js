@@ -7,7 +7,6 @@ posts.get('/', postController.list);
 posts.post('/', postController.write);
 posts.get('/:id', postController.read);
 posts.delete('/:id', postController.remove);
-posts.put('/:id', postController.replace);
 posts.patch('/:id', postController.update);
 
 module.exports = posts;
