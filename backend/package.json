@@ -7,6 +7,7 @@
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "esm": "^3.2.25",
+    "joi": "^17.4.0",
     "koa": "^2.13.1",
     "koa-body": "^2.5.0",
     "koa-bodyparser": "^4.3.0",
