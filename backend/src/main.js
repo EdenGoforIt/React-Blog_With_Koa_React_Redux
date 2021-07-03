@@ -1,36 +1,33 @@
 require('dotenv').config();
-const Koa = require('koa');
-const Router = require('koa-router');
-const bodyParser = require('koa-bodyparser');
-const mongoose = require('mongoose');
-const api = require('./api');
-const app = new Koa();
-const router = new Router();
+import Koa from 'koa';
+import Router from 'koa-router';
+import bodyParser from 'koa-bodyparser';
+import mongoose from 'mongoose';
 
-// eslint-disable-next-line no-undef
+import api from './api';
+import createFakeData from './createFakeData';
+
 const { PORT, MONGO_URI } = process.env;
 
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
+  .connect(MONGO_URI, { useNewUrlParser: true, useFindAndModify: false })
   .then(() => {
-    console.log('Connected to Mongo');
+    createFakeData();
+    console.log('Connected to MongoDB');
   })
   .catch((e) => {
     console.error(e);
   });
 
-router.use('/api', api.routes());
+const app = new Koa();
+const router = new Router();
 
-//need to apply before using the route
-router.use(bodyParser());
+router.use('/api', api.routes());
+app.use(bodyParser());
 
 app.use(router.routes()).use(router.allowedMethods());
 
 const port = PORT || 4000;
 app.listen(port, () => {
-  console.log(`Listening to the port ${port}`);
+  console.log('Listening to port %d', port);
 });
