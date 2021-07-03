@@ -76,6 +76,19 @@ export const remove = async (ctx) => {
 
 export const update = async (ctx) => {
   const { id } = ctx.params;
+  const schema = Joi.object().keys({
+    title: Joi.string(),
+    body: Joi.string(),
+    tags: Joi.array().items(Joi.string()),
+  });
+
+  const result = Joi.validate(ctx.request.body, schema);
+  if (result.error) {
+    ctx.status = 400;
+    ctx.body = result.error;
+    return;
+  }
+
   try {
     const post = await Post.findByIdAndUpdate(id, ctx.rquest.body, {
       new: true,
