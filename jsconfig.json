@@ -1,0 +1,6 @@
+{
+  //make the import available
+  "compilerOptions": {
+    "target": "es6"
+  }
+}
