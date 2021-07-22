@@ -35,13 +35,7 @@ const buttonStyle = css`
         background: ${palette.cyan[4]};
       }
     `}
-
-  ${(props) =>
-    props.marginTopSmall &&
-    css`
-      margin-top: 5px;
-    `}
-
+ 
     &:disabled {
     background: ${palette.gray[3]};
     color: ${palette.gray[5]};

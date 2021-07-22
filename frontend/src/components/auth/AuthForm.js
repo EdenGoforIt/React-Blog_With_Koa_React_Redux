@@ -70,9 +70,9 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           placeholder="password"
           type="password"
         />
-        <Button cyan fullWidth marginTopSmall>
+        <ButtonWithMarginTop cyan fullWidth marginTopSmall>
           Login
-        </Button>
+        </ButtonWithMarginTop>
       </form>
       <Footer>
         <Link to="/register">Register</Link>
