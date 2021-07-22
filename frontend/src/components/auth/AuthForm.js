@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../../lib/styles/pallette';
+import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
 import { Link } from 'react-router-dom';
 
@@ -70,7 +70,9 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           placeholder="password"
           type="password"
         />
-        <Button>Login</Button>
+        <Button cyan fullWidth marginTopSmall>
+          Login
+        </Button>
       </form>
       <Footer>
         <Link to="/register">Register</Link>

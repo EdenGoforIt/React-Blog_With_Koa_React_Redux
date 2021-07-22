@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import palette from '../../lib/styles/pallette';
+import palette from '../../lib/styles/palette';
 //layout of the login and register page
 
 const AuthTemplateBlock = styled.div`
