@@ -55,9 +55,10 @@ const ErrorMessage = styled.div`
   margin-top: 1rem;
 `;
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
+  const text = textMap[type];
   return (
     <AuthFormBlock>
-      <h3>Login</h3>
+      <h3>{text}</h3>
       <form>
         <StyledInput
           autoComplete="username"
@@ -71,11 +72,15 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           type="password"
         />
         <ButtonWithMarginTop cyan fullWidth marginTopSmall>
-          Login
+          {text}
         </ButtonWithMarginTop>
       </form>
       <Footer>
-        <Link to="/register">Register</Link>
+        {type === 'login' ? (
+          <Link to="/register">Regsiter</Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </Footer>
     </AuthFormBlock>
   );
