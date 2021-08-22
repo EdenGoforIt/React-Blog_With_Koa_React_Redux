@@ -36,8 +36,6 @@ const auth = handleActions(
       produce(state, (draft) => {
         draft[form][key] = value;
       }),
-
-      
   },
   initialState,
 );
