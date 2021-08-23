@@ -64,13 +64,27 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           autoComplete="username"
           name="username"
           placeholder="username"
+          onChange={onChange}
+          value={form.username}
         />
         <StyledInput
-          autoComplete="new-password"
+          autoComplete="password"
           name="password"
           placeholder="password"
           type="password"
+          onChange={onChange}
+          value={form.password}
         />
+        {type === 'register' && (
+          <StyledInput
+            autoComplete="new-password"
+            name="passwordConfirm"
+            placeholder="confirm password"
+            type="password"
+            onChange={onChange}
+            value={form.passwordConfirm}
+          />
+        )}
         <ButtonWithMarginTop cyan fullWidth marginTopSmall>
           {text}
         </ButtonWithMarginTop>

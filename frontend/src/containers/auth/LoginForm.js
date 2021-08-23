@@ -6,9 +6,9 @@ import AuthForm from '../../components/auth/AuthForm';
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { form } = useSelector(({ auth }) => ({
-    form: auth.form,
+    form: auth.login,
   }));
-
+  console.log(form);
   const onChange = (e) => {
     const { value, name } = e.target;
     dispatch(changeField({ form: 'login', key: name, value }));
@@ -21,7 +21,6 @@ const LoginForm = () => {
   useEffect(() => {
     dispatch(initializeForm('login'));
   }, [dispatch]);
-
   return (
     <AuthForm
       type="login"
@@ -31,3 +30,5 @@ const LoginForm = () => {
     />
   );
 };
+
+export default LoginForm;
