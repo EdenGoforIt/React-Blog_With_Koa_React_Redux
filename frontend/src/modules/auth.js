@@ -14,13 +14,15 @@ const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] =
 const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] =
   createRequestActionTypes('auth/LOGIN');
 
-export const register = createAction(REGISTER, (username, password) => {
-  username, password;
-});
+export const register = createAction(REGISTER, (username, password) => ({
+  username,
+  password,
+}));
 
-export const login = createAction(LOGIN, ({ username, password }) => {
-  username, password;
-});
+export const login = createAction(LOGIN, ({ username, password }) => ({
+  username,
+  password,
+}));
 
 //create saga
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
