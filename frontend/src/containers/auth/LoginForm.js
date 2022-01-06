@@ -8,7 +8,6 @@ const LoginForm = () => {
   const { form } = useSelector(({ auth }) => ({
     form: auth.login,
   }));
-  console.log(form);
   const onChange = (e) => {
     const { value, name } = e.target;
     dispatch(changeField({ form: 'login', key: name, value }));
