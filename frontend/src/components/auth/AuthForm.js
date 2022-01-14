@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import palette from '../../lib/styles/palette';
 import Button from '../common/Button';
-import { Link } from 'react-router-dom';
+
+/**
+ * 회원가입 또는 로그인 폼을 보여줍니다.
+ */
 
 const AuthFormBlock = styled.div`
   h3 {
@@ -12,6 +16,9 @@ const AuthFormBlock = styled.div`
   }
 `;
 
+/**
+ * 스타일링된 input
+ */
 const StyledInput = styled.input`
   font-size: 1rem;
   border: none;
@@ -28,6 +35,9 @@ const StyledInput = styled.input`
   }
 `;
 
+/**
+ * 폼 하단에 로그인 혹은 회원가입 링크를 보여줌
+ */
 const Footer = styled.div`
   margin-top: 2rem;
   text-align: right;
@@ -39,38 +49,43 @@ const Footer = styled.div`
     }
   }
 `;
+
 const ButtonWithMarginTop = styled(Button)`
   margin-top: 1rem;
 `;
 
 const textMap = {
-  login: 'Login',
-  register: 'Register',
+  login: '로그인',
+  register: '회원가입'
 };
 
+/**
+ * 에러를 보여줍니다
+ */
 const ErrorMessage = styled.div`
   color: red;
   text-align: center;
   font-size: 0.875rem;
   margin-top: 1rem;
 `;
+
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = textMap[type];
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
-      <form>
+      <form onSubmit={onSubmit}>
         <StyledInput
           autoComplete="username"
           name="username"
-          placeholder="username"
+          placeholder="아이디"
           onChange={onChange}
           value={form.username}
         />
         <StyledInput
-          autoComplete="password"
+          autoComplete="new-password"
           name="password"
-          placeholder="password"
+          placeholder="비밀번호"
           type="password"
           onChange={onChange}
           value={form.password}
@@ -79,21 +94,22 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           <StyledInput
             autoComplete="new-password"
             name="passwordConfirm"
-            placeholder="confirm password"
+            placeholder="비밀번호 확인"
             type="password"
             onChange={onChange}
             value={form.passwordConfirm}
           />
         )}
-        <ButtonWithMarginTop cyan fullWidth marginTopSmall>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
           {text}
         </ButtonWithMarginTop>
       </form>
       <Footer>
         {type === 'login' ? (
-          <Link to="/register">Regsiter</Link>
+          <Link to="/register">회원가입</Link>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link to="/login">로그인</Link>
         )}
       </Footer>
     </AuthFormBlock>
