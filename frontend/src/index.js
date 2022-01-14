@@ -11,9 +11,10 @@ import rootReducer, { rootSaga } from './modules/index';
 import createSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
+const store = createStore( 
   rootReducer,
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
+
 );
 
 sagaMiddleware.run(rootSaga);
