@@ -51,6 +51,7 @@ const Header = ({ user, onLogout }) => {
       <HeaderBlock>
         <Wrapper>
           <Avatar
+            to="/"
             size="sm"
             imageUrl="../../assets/profile.jpg"
             username={username}
@@ -61,11 +62,11 @@ const Header = ({ user, onLogout }) => {
           {user ? (
             <div className="right">
               <UserInfo>{user.username}</UserInfo>
-              <Button onClick={onLogout}>로그아웃</Button>
+              <Button onClick={onLogout}>Logout</Button>
             </div>
           ) : (
             <div className="right">
-              <Button to="/login">로그인</Button>
+              <Button to="/login">Login</Button>
             </div>
           )}
         </Wrapper>

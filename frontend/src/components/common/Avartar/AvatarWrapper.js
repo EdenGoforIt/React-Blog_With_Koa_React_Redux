@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 const AvatarWrapper = styled.div`
   width: ${(props) => size(props.size)};
+  &:hover{
+     cursor: pointer;
+  },
 `;
 
 const sizeUnit = 16;
