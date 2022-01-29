@@ -14,8 +14,7 @@ const LoginForm = ({ history }) => {
     authError: auth.authError,
     user: user.user,
   }));
-  // 인풋 변경 이벤트 핸들러
-  const onChange = e => {
+  const onChange = (e) => {
     const { value, name } = e.target;
     dispatch(
       changeField({
@@ -27,26 +26,23 @@ const LoginForm = ({ history }) => {
   };
 
   // 폼 등록 이벤트 핸들러
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const { username, password } = form;
     dispatch(login({ username, password }));
   };
 
-  // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
   useEffect(() => {
     dispatch(initializeForm('login'));
   }, [dispatch]);
 
   useEffect(() => {
     if (authError) {
-      console.log('오류 발생');
       console.log(authError);
-      setError('로그인 실패');
+      setError('Login Failed');
       return;
     }
     if (auth) {
-      console.log('로그인 성공');
       dispatch(check());
     }
   }, [auth, authError, dispatch]);

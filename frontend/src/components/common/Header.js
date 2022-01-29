@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Responsive from './Responsive';
 import Button from './Button';
+import Avatar from './Avartar/Avatar';
+
+const username = 'Eden Park';
 
 const HeaderBlock = styled.div`
   position: fixed;
@@ -47,8 +50,13 @@ const Header = ({ user, onLogout }) => {
     <>
       <HeaderBlock>
         <Wrapper>
+          <Avatar
+            size="sm"
+            imageUrl="../../assets/profile.jpg"
+            username={username}
+          />
           <Link to="/" className="logo">
-            REACTERS
+            Eden's Blog
           </Link>
           {user ? (
             <div className="right">

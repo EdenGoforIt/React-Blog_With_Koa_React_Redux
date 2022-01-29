@@ -55,8 +55,8 @@ const ButtonWithMarginTop = styled(Button)`
 `;
 
 const textMap = {
-  login: '로그인',
-  register: '회원가입'
+  login: 'Log in',
+  register: 'Register',
 };
 
 /**
@@ -78,14 +78,14 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
         <StyledInput
           autoComplete="username"
           name="username"
-          placeholder="아이디"
+          placeholder="Id"
           onChange={onChange}
           value={form.username}
         />
         <StyledInput
           autoComplete="new-password"
           name="password"
-          placeholder="비밀번호"
+          placeholder="Password"
           type="password"
           onChange={onChange}
           value={form.password}
@@ -94,7 +94,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           <StyledInput
             autoComplete="new-password"
             name="passwordConfirm"
-            placeholder="비밀번호 확인"
+            placeholder="Re-password"
             type="password"
             onChange={onChange}
             value={form.passwordConfirm}
@@ -107,9 +107,9 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
       </form>
       <Footer>
         {type === 'login' ? (
-          <Link to="/register">회원가입</Link>
+          <Link to="/register">Register</Link>
         ) : (
-          <Link to="/login">로그인</Link>
+          <Link to="/login">Login</Link>
         )}
       </Footer>
     </AuthFormBlock>
