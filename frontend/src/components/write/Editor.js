@@ -39,7 +39,7 @@ const Editor = ({ title, body, onChangeField }) => {
   useEffect(() => {
     quillInstance.current = new Quill(quillElement.current, {
       theme: 'bubble',
-      placeholder: '내용을 작성하세요...',
+      placeholder: 'Enter ...',
       modules: {
         // 더 많은 옵션
         // https://quilljs.com/docs/modules/toolbar/ 참고
@@ -62,17 +62,13 @@ const Editor = ({ title, body, onChangeField }) => {
     });
   }, [onChangeField]);
 
-  const onChangeTitle = e => {
+  const onChangeTitle = (e) => {
     onChangeField({ key: 'title', value: e.target.value });
   };
 
   return (
     <EditorBlock>
-      <TitleInput
-        placeholder="제목을 입력하세요"
-        onChange={onChangeTitle}
-        value={title}
-      />
+      <TitleInput placeholder="Title" onChange={onChangeTitle} value={title} />
       <QuillWrapper>
         <div ref={quillElement} />
       </QuillWrapper>
