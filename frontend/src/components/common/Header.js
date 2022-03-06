@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Responsive from './Responsive';
 import Button from './Button';
 import Avatar from './Avartar/Avatar';
-
+import palette from '../../lib/styles/palette';
 const username = 'Eden Park';
 
 const HeaderBlock = styled.div`
@@ -33,6 +33,14 @@ const Wrapper = styled(Responsive)`
   }
 `;
 
+const Links = styled.div`
+  a {
+    padding-right: 3px;
+  }
+  & > a:hover {
+    background: ${palette.gray[3]};
+  }
+`;
 /**
  * 헤더가 fixed로 되어 있기 때문에 페이지의 컨텐츠가 4rem 아래 나타나도록 해주는 컴포넌트
  */
@@ -59,6 +67,11 @@ const Header = ({ user, onLogout }) => {
           <Link to="/" className="logo">
             Eden's Blog
           </Link>
+          <Links>
+            <Link to="/write" className="logo">
+              Write
+            </Link> 
+          </Links>
           {user ? (
             <div className="right">
               <UserInfo>{user.username}</UserInfo>

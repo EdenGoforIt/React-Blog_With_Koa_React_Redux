@@ -52,8 +52,7 @@ const RegisterForm = ({ history }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (authError) {
-      // 계정명이 이미 존재할 때
+    if (authError) { 
       if (authError.response.status === 409) {
         setError('Account Exist');
         return;

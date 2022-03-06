@@ -5,10 +5,13 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
+import HeaderContainer from './containers/common/HeaderContainer';
 
 const App = () => {
   return (
     <>
+      <HeaderContainer />
+
       <Route component={PostListPage} path={['/@:username', '/']} exact />
       <Route component={LoginPage} path="/login" />
       <Route component={RegisterPage} path="/register" />

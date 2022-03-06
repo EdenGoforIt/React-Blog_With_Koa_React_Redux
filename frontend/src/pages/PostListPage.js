@@ -1,11 +1,12 @@
 import React from 'react';
-import HeaderContainer from '../containers/common/HeaderContainer';
+import Responsive from '../components/common/Responsive';
 
 const PostListPage = () => {
   return (
     <>
-      <HeaderContainer />
-      <div>Hello.</div>
+      <Responsive>
+        <div>Hello.</div>
+      </Responsive>
     </>
   );
 };
