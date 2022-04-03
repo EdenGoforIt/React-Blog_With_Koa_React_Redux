@@ -1,12 +1,9 @@
 import React from 'react';
-import Responsive from '../components/common/Responsive';
-
+import PostViewer from '../components/post/PostViewer';
 const PostListPage = () => {
   return (
     <>
-      <Responsive>
-        <div>Hello.</div>
-      </Responsive>
+      <PostViewer />
     </>
   );
 };

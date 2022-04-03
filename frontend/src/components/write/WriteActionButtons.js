@@ -22,7 +22,7 @@ const WriteActionButtons = ({ onCancel, onPublish }) => {
   return (
     <WriteActionButtonsBlock>
       <StyledButton cyan onClick={onPublish}>
-        Write a blog
+        Publish
       </StyledButton>
       <StyledButton onClick={onCancel}>Cancel</StyledButton>
     </WriteActionButtonsBlock>
