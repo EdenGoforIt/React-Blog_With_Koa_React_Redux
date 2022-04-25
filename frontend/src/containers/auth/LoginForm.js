@@ -43,6 +43,7 @@ const LoginForm = ({ history }) => {
       return;
     }
     if (auth) {
+      console.log('Log in success');
       dispatch(check());
     }
   }, [auth, authError, dispatch]);

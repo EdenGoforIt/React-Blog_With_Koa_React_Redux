@@ -53,6 +53,7 @@ const RegisterForm = ({ history }) => {
 
   useEffect(() => {
     if (authError) { 
+      //http status conflicts
       if (authError.response.status === 409) {
         setError('Account Exist');
         return;
