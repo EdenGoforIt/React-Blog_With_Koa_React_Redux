@@ -1,10 +1,10 @@
-import React from 'react'; 
-import PostViewer from '../components/post/PostViewer';
+import React from 'react';
+import PostViewerContainer from '../containers/post/PostViewerContainer';
 
 const PostPage = () => {
   return (
     <>
-      <PostViewer />
+      <PostViewerContainer />
     </>
   );
 };

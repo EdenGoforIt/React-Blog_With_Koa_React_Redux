@@ -25,7 +25,7 @@ const PostContent = styled.div`
 `;
 
 const PostViewer = ({ post, error, loading }) => {
-  // 에러 발생 시
+  // when error occurs
   if (error) {
     if (error.response && error.response.status === 404) {
       return <PostViewerBlock>Post Not Found</PostViewerBlock>;
@@ -33,7 +33,7 @@ const PostViewer = ({ post, error, loading }) => {
     return <PostViewerBlock>Error Occurred</PostViewerBlock>;
   }
 
-  // 로딩중이거나, 아직 포스트 데이터가 없을 시
+  // when loading, or there is no post
   if (loading || !post) {
     return null;
   }
