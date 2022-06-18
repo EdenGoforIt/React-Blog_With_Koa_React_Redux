@@ -13,8 +13,7 @@ const WriteActionButtonsContainer = ({ history }) => {
     post: write.post,
     postError: write.postError,
   }));
-
-  // 포스트 등록
+ 
   const onPublish = () => {
     dispatch(
       writePost({
