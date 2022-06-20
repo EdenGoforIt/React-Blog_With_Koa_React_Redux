@@ -76,8 +76,7 @@ export const write = async (ctx) => {
   GET /api/posts?username=&tag=&page=
 */
 export const list = async (ctx) => {
-  // query 는 문자열이기 때문에 숫자로 변환해주어야합니다.
-  // 값이 주어지지 않았다면 1 을 기본으로 사용합니다.
+  console.log(ctx);
   const page = parseInt(ctx.query.page || '1', 10);
 
   if (page < 1) {
