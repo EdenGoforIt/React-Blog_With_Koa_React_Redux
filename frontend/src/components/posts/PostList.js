@@ -81,6 +81,8 @@ const PostList = ({ posts, loading, error, showWriteButton }) => {
     return <PostListBlock>Error Occurred</PostListBlock>;
   }
 
+  console.log(posts);
+  console.log(error);
   return (
     <PostListBlock>
       <WritePostButtonWrapper>
