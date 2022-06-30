@@ -76,7 +76,6 @@ export const write = async (ctx) => {
   GET /api/posts?username=&tag=&page=
 */
 export const list = async (ctx) => {
-  console.log(ctx);
   const page = parseInt(ctx.query.page || '1', 10);
 
   if (page < 1) {

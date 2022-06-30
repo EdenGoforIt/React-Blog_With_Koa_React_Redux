@@ -1,9 +1,10 @@
-import PostList from '../components/post/PostList';
 import React from 'react';
+import PostListContainer from '../containers/post/PostListContainer';
+
 const PostListPage = () => {
   return (
     <>
-      <PostList />
+      <PostListContainer />
     </>
   );
 };

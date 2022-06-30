@@ -61,6 +61,9 @@ const Tags = styled.div`
 `;
 const PostItem = ({ post }) => {
   const { publishedDate, user, tags, title, body, _id } = post;
+  console.log(user);
+  console.log(tags);
+  console.log(publishedDate);
   return (
     <PostItemBlock>
       <h2>
@@ -70,8 +73,8 @@ const PostItem = ({ post }) => {
         username={user.username}
         publishedDate={new Date(publishedDate)}
       />
-      <Tags tags={tags} />
-      <p>{body}</p>
+      {tags && <Tags tags={tags} />}
+      <span dangerouslySetInnerHTML={{ __html: body }}></span>
     </PostItemBlock>
   );
 };
@@ -80,9 +83,6 @@ const PostList = ({ posts, loading, error, showWriteButton }) => {
   if (error) {
     return <PostListBlock>Error Occurred</PostListBlock>;
   }
-
-  console.log(posts);
-  console.log(error);
   return (
     <PostListBlock>
       <WritePostButtonWrapper>
