@@ -10,7 +10,7 @@ const palette = {
     '#868e96',
     '#495057',
     '#343a40',
-    '#212529'
+    '#212529',
   ],
   cyan: [
     '#e3fafc',
@@ -22,8 +22,9 @@ const palette = {
     '#15aabf',
     '#1098ad',
     '#0c8599',
-    '#0b7285'
-  ]
+    '#0b7285',
+  ],
+  postBackground: '#252530',
 };
 
 export default palette;
