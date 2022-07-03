@@ -4,6 +4,7 @@ import Responsive from '../common/Responsive';
 import React from 'react';
 import Button from '../common/Button';
 import { Link } from 'react-router-dom';
+import SubInfo from '../common/SubInfo';
 
 const PostListBlock = styled(Responsive)`
   margin-top: 3rem;
@@ -16,6 +17,11 @@ const WritePostButtonWrapper = styled.div`
 `;
 
 const PostItemBlock = styled.div`
+  background-color: ${palette.postBackground};
+  border-radius: 20px;
+  margin: 15px;
+  padding: 20px;
+  color: white;
   padding-top: 3rem;
   padding-bottom: 3rem;
   $:first-child {
@@ -27,23 +33,13 @@ const PostItemBlock = styled.div`
   h2 {
     font-size: 2rem;
     margin-top: 0;
-    margin-top: 0;
+    margin-bottom: 0;
     &:hover {
       color: ${palette.gray[6]};
     }
   }
   p {
     margin-top: 2rem;
-  }
-`;
-
-const SubInfo = styled.div`
-  color: ${palette.gray[6]};
-  span+span: before {
-    color: ${palette.gray[4]};
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    content: '\B7';
   }
 `;
 
@@ -61,9 +57,7 @@ const Tags = styled.div`
 `;
 const PostItem = ({ post }) => {
   const { publishedDate, user, tags, title, body, _id } = post;
-  console.log(user);
-  console.log(tags);
-  console.log(publishedDate);
+
   return (
     <PostItemBlock>
       <h2>
@@ -85,13 +79,6 @@ const PostList = ({ posts, loading, error, showWriteButton }) => {
   }
   return (
     <PostListBlock>
-      <WritePostButtonWrapper>
-        {showWriteButton && (
-          <Button cyan to="/write">
-            Write
-          </Button>
-        )}
-      </WritePostButtonWrapper>
       {!loading && posts && (
         <div>
           {posts.map((post) => (
