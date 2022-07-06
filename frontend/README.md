@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Node Environment 
+
+### Front-end
+Node 12 - 16 + to install packages 
+
+### Back-end
+Node 12.0.0 to install packages 
+
+## How to start an application
+
+go to /backend and /frontend and execute `npm run start`
+
 ## Available Scripts
 
 In the project directory, you can run:
