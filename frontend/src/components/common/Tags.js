@@ -1,25 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import palette from '../../styles/palette';
 import { Link } from 'react-router-dom';
 
 const TagsBlock = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 0;
   .tag {
     display: inline-block;
-    color: ${palette.cyan[7]};
+    color: white;
     text-decoration: none;
     margin-right: 0.5rem;
     &:hover {
-      color: ${palette.cyan[6]};
+      color: ${palette.gray[6]};
     }
+    border: 1px solid white;
+    border-radius: 5%;
+    padding: 0.2rem;
+    font-size:10px;
+    background-color: purple;
   }
 `;
 
 const Tags = ({ tags }) => {
   return (
     <TagsBlock>
-      {tags.map(tag => (
+      {tags.map((tag) => (
         <Link className="tag" to={`/?tag=${tag}`} key={tag}>
           #{tag}
         </Link>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Responsive from './Responsive';
 import Button from './Button';
 import Avatar from './Avartar/Avatar';
-import palette from '../../lib/styles/palette';
+import palette from '../../styles/palette';
 const username = 'Eden Park';
 
 const HeaderBlock = styled.div`

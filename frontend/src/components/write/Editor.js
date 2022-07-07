@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useCallback } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.bubble.css';
 import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import palette from '../../styles/palette';
 import Responsive from '../common/Responsive';
 
 const EditorBlock = styled(Responsive)`

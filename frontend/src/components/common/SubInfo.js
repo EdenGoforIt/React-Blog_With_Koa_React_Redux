@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import palette from '../../lib/styles/palette';
+import palette from '../../styles/palette';
 
 const SubInfoBlock = styled.div`
   ${(props) =>
@@ -10,7 +10,7 @@ const SubInfoBlock = styled.div`
       margin-top: 1rem;
     `}
   color: ${palette.gray[6]};
-
+  font-size: 0.5rem !important;
   span + span:before {
     color: ${palette.gray[4]};
     padding-left: 0.25rem;

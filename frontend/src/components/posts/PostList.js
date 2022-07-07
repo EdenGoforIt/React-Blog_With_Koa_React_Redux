@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import palette from '../../lib/styles/palette';
-import Responsive from '../common/Responsive';
-import React from 'react';
-import Button from '../common/Button';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import palette from '../../styles/palette';
+import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
+import Tags from '../common/Tags';
+import React from 'react';
 
 const PostListBlock = styled(Responsive)`
   margin-top: 3rem;
@@ -30,7 +30,7 @@ const PostItemBlock = styled.div`
   $ + $ {
     border-top: 1px solid ${palette.gray[2]};
   }
-  h2 {
+  h3 {
     font-size: 2rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -39,36 +39,26 @@ const PostItemBlock = styled.div`
     }
   }
   p {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 
-const Tags = styled.div`
-  margin-top: 0.5rem;
-  .tag {
-    display: inline-block;
-    color: ${palette.cyan[1]};
-    text-decoration: none;
-    margin-right: 0.5rem;
-    &:hover {
-      color: ${palette.cyan[4]};
-    }
-  }
+const PostBody = styled.div`
+  font-size: 1rem;
 `;
 const PostItem = ({ post }) => {
   const { publishedDate, user, tags, title, body, _id } = post;
-
   return (
     <PostItemBlock>
-      <h2>
+      {tags && <Tags tags={tags} />}
+      <h3>
         <Link to={`/@${user.username}/${_id}`}>{title}</Link>
-      </h2>
+      </h3>
       <SubInfo
         username={user.username}
         publishedDate={new Date(publishedDate)}
       />
-      {tags && <Tags tags={tags} />}
-      <span dangerouslySetInnerHTML={{ __html: body }}></span>
+      <PostBody dangerouslySetInnerHTML={{ __html: body }}></PostBody>
     </PostItemBlock>
   );
 };
