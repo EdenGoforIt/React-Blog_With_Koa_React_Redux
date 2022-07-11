@@ -17,7 +17,7 @@ const PaginationContainer = ({ location, match }) => {
 
   const { tag, page = 1 } = qs.parse(location.search, {
     ignoreQueryPrefix: true,
-  });
+  }); 
 
   return (
     <Pagination
