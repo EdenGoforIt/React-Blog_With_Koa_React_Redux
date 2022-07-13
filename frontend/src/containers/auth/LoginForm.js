@@ -25,7 +25,6 @@ const LoginForm = ({ history }) => {
     );
   };
 
-  // 폼 등록 이벤트 핸들러
   const onSubmit = (e) => {
     e.preventDefault();
     const { username, password } = form;
@@ -50,7 +49,9 @@ const LoginForm = ({ history }) => {
 
   useEffect(() => {
     if (user) {
-      history.push('/');
+      history.push(`/@${user.username}`);
+
+      // history.push('/');
       try {
         localStorage.setItem('user', JSON.stringify(user));
       } catch (e) {
