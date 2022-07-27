@@ -6,7 +6,7 @@ import Pagination from '../../components/posts/Pagination';
 
 const PaginationContainer = ({ location, match }) => {
   const { lastPage, posts, loading } = useSelector(({ posts, loading }) => ({
-    lastPage: posts.pastPage,
+    lastPage: posts.lastPage,
     posts: posts.posts,
     loading: loading['posts/LIST_POSTS'],
   }));
@@ -17,7 +17,7 @@ const PaginationContainer = ({ location, match }) => {
 
   const { tag, page = 1 } = qs.parse(location.search, {
     ignoreQueryPrefix: true,
-  }); 
+  });
 
   return (
     <Pagination
