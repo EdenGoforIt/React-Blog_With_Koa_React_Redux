@@ -5,6 +5,8 @@ import Responsive from '../common/Responsive';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const PostListBlock = styled(Responsive)`
   margin-top: 3rem;
@@ -54,6 +56,8 @@ const PostItem = ({ post }) => {
       <h3>
         <Link to={`/@${user.username}/${_id}`}>{title}</Link>
       </h3>
+      <FontAwesomeIcon icon={faPencil} />
+
       <SubInfo
         username={user.username}
         publishedDate={new Date(publishedDate)}
