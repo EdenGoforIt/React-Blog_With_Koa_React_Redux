@@ -3,22 +3,24 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import palette from '../../styles/palette';
 
+//TODO: move font family to sass
 const buttonStyle = css`
   border: none;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  padding: 0.25rem 1rem;
+  padding: 0.65rem;
   color: white;
   outline: none;
   cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 
   background: ${palette.gray[8]};
   &:hover {
     background: ${palette.gray[6]};
   }
 
-  ${props =>
+  ${(props) =>
     props.fullWidth &&
     css`
       padding-top: 0.75rem;
@@ -27,7 +29,7 @@ const buttonStyle = css`
       font-size: 1.125rem;
     `}
 
-  ${props =>
+  ${(props) =>
     props.cyan &&
     css`
       background: ${palette.cyan[5]};
@@ -44,8 +46,9 @@ const StyledButton = styled.button`
 const StyledLink = styled(Link)`
   ${buttonStyle}
 `;
+//TODO: change to all button and to -> onclick event to redirect the user
 
-const Button = props => {
+const Button = (props) => {
   return props.to ? (
     <StyledLink {...props} cyan={props.cyan ? 1 : 0} />
   ) : (
