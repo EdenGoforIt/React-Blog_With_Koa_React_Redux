@@ -16,15 +16,18 @@ const SubInfoBlock = styled.div`
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     content: '\\B7';
-  }
+  };
+  width: ${(props) => props.width + '%'};
 `;
 
-const SubInfo = ({ username, publishedDate, hasMarginTop }) => {
+const SubInfo = ({ username, publishedDate, hasMarginTop, width }) => {
+  console.log(width);
+
   return (
-    <SubInfoBlock hasMarginTop={hasMarginTop}>
+    <SubInfoBlock hasMarginTop={hasMarginTop} width={width}>
       <span>
         <b>
-         By <Link to={`/@${username}`}>{username}</Link>
+          By <Link to={`/@${username}`}>{username}</Link>
         </b>
       </span>
       <span>{new Date(publishedDate).toLocaleDateString()}</span>

@@ -12,6 +12,16 @@ const PostListBlock = styled(Responsive)`
   margin-top: 3rem;
 `;
 
+const Title = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  display: flex-inline;
+`;
+
+const EditIcon = styled.div`
+  margin-left: auto;
+`;
+
 const WritePostButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -19,13 +29,13 @@ const WritePostButtonWrapper = styled.div`
 `;
 
 const PostItemBlock = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   background-color: ${palette.postBackground};
   border-radius: 20px;
   margin: 15px;
-  padding: 20px;
+  padding: 10px 20px;
   color: white;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   $:first-child {
     padding-top: 0;
   }
@@ -53,12 +63,15 @@ const PostItem = ({ post }) => {
   return (
     <PostItemBlock>
       {tags && <Tags tags={tags} />}
-      <h3>
+      <Title>
         <Link to={`/@${user.username}/${_id}`}>{title}</Link>
-      </h3>
-      <FontAwesomeIcon icon={faPencil} />
+      </Title>
+      <EditIcon>
+        <FontAwesomeIcon icon={faPencil} />
+      </EditIcon>
 
       <SubInfo
+        width={100}
         username={user.username}
         publishedDate={new Date(publishedDate)}
       />
