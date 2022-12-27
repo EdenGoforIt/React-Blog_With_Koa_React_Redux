@@ -33,6 +33,38 @@ export const checkOwnPost = (ctx, next) => {
   return next();
 };
 
+const removeHtmlAndShort = (body) => {
+  const filtered = sanitizeHtml(body, {
+    allowedTags: [],
+  });
+
+  return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}`;
+};
+
+const sanitizeOption = {
+  allowedTags: [
+    'h1',
+    'h2',
+    'b',
+    'i',
+    'u',
+    's',
+    'p',
+    'ul',
+    'ol',
+    'li',
+    'blockquote',
+    'a',
+    'img',
+  ],
+  allowedAttributes: {
+    a: ['href', 'name', 'target'],
+    img: ['src'],
+    li: ['class'],
+  },
+  allowedSchemes: ['data', 'http'],
+};
+
 /*
   POST /api/posts
   {
@@ -60,7 +92,7 @@ export const write = async (ctx) => {
   const { title, body, tags } = ctx.request.body;
   const post = new Post({
     title,
-    body,
+    body: sanitizeHtml(body, sanitizeOption),
     tags,
     user: ctx.state.user,
   });
@@ -70,14 +102,6 @@ export const write = async (ctx) => {
   } catch (e) {
     ctx.throw(500, e);
   }
-};
-
-const removeHtmlAndShort = (body) => {
-  const filtered = sanitizeHtml(body, {
-    allowedTags: [],
-  });
-
-  return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}`;
 };
 
 /*
