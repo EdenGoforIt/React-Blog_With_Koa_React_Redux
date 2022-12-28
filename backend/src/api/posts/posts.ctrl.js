@@ -171,6 +171,10 @@ export const remove = async (ctx) => {
 export const update = async (ctx) => {
   const { id } = ctx.params;
   // write 에서 사용한 schema 와 비슷한데, required() 가 없습니다.
+  const nextData = { ...ctx.request.body };
+  if (nextData) {
+    nextData.body = sanitizeHtml(nextData.body);
+  }
   const schema = Joi.object().keys({
     title: Joi.string(),
     body: Joi.string(),
@@ -186,7 +190,7 @@ export const update = async (ctx) => {
   }
 
   try {
-    const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+    const post = await Post.findByIdAndUpdate(id, nextData, {
       new: true, // 이 값을 설정하면 업데이트된 데이터를 반환합니다.
       // false 일 때에는 업데이트 되기 전의 데이터를 반환합니다.
     }).exec();
