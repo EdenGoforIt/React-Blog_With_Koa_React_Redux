@@ -19,6 +19,11 @@ const buttonStyle = css`
   &:hover {
     background: ${palette.gray[6]};
   }
+  &:disabled {
+    background: ${palette.gray[3]};
+    color: ${palette.gray[5]};
+    cursor: not-allowed;
+  }
 
   ${(props) =>
     props.fullWidth &&
