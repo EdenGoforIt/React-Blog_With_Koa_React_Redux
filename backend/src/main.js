@@ -13,6 +13,7 @@ mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    family: 4,
   })
   .then(() => {
     console.log('Connected to MongoDB');

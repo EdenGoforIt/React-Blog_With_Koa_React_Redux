@@ -11,6 +11,8 @@ const PaginationContainer = ({ location, match }) => {
     loading: loading['posts/LIST_POSTS'],
   }));
 
+  console.log('posts', posts);
+  console.log('lastPage', lastPage);
   if (!posts || loading) return null;
 
   const { username } = match.params;
