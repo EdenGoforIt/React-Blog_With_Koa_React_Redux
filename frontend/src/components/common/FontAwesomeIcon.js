@@ -10,8 +10,6 @@ const StyledFontAwesome = styled(Link)`
   ${fontAwesomeStyle}
 `;
 const FontAwesomeIcon = (props) => {
-  console.log('fontawesome icons props', props);
-
   return <StyledFontAwesome {...props} />;
 };
 

@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PostViewer from '../../components/post/PostViewer';
 import { readPost, unloadPost } from '../../modules/post';
-import { withRouter } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const PostViewerContainer = ({ match }) => {
-  const { postId } = match.params;
+const PostViewerContainer = () => {
+  const { postId } = useParams();
   const dispatch = useDispatch();
   const { post, error, loading } = useSelector(({ post, loading }) => ({
     post: post.post,
@@ -25,4 +25,4 @@ const PostViewerContainer = ({ match }) => {
   return <PostViewer post={post} loading={loading} error={error} />;
 };
 
-export default withRouter(PostViewerContainer);
+export default PostViewerContainer;

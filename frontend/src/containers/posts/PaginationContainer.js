@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import qs from 'qs';
 import Pagination from '../../components/posts/Pagination';
 
@@ -11,8 +10,6 @@ const PaginationContainer = ({ location, match }) => {
     loading: loading['posts/LIST_POSTS'],
   }));
 
-  console.log('posts', posts);
-  console.log('lastPage', lastPage);
   if (!posts || loading) return null;
 
   const { username } = match.params;
@@ -31,4 +28,4 @@ const PaginationContainer = ({ location, match }) => {
   );
 };
 
-export default withRouter(PaginationContainer);
+export default PaginationContainer;

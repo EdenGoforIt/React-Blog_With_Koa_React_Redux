@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import qs from 'qs';
-import { withRouter } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PostList from '../../components/posts/PostList';
 import { listPosts } from '../../modules/posts';
 
-const PostListContainer = ({ location, match }) => {
+const PostListContainer = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const match = useParams();
+
   const { posts, error, loading, user } = useSelector(
     ({ posts, loading, user }) => ({
       posts: posts?.posts,
@@ -16,11 +19,10 @@ const PostListContainer = ({ location, match }) => {
     }),
   );
   useEffect(() => {
-    const { username } = match.params;
     const { tag, page } = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
-
+    const { username } = match;
     dispatch(listPosts({ tag, username, page }));
   }, [dispatch, location.search, match.params]);
 
@@ -34,4 +36,4 @@ const PostListContainer = ({ location, match }) => {
   );
 };
 
-export default withRouter(PostListContainer);
+export default PostListContainer;

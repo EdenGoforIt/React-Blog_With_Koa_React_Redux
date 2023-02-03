@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import WriteActionButtons from '../../components/write/WriteActionButtons';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { writePost } from '../../modules/write';
 
-const WriteActionButtonsContainer = ({ history }) => {
+const WriteActionButtonsContainer = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { title, body, tags, post, postError } = useSelector(({ write }) => ({
     title: write.title,
     body: write.body,
@@ -13,7 +14,7 @@ const WriteActionButtonsContainer = ({ history }) => {
     post: write.post,
     postError: write.postError,
   }));
- 
+
   const onPublish = () => {
     dispatch(
       writePost({
@@ -26,20 +27,20 @@ const WriteActionButtonsContainer = ({ history }) => {
 
   // 취소
   const onCancel = () => {
-    history.goBack();
+    navigate.goBack();
   };
 
   // 성공 혹은 실패시 할 작업
   useEffect(() => {
     if (post) {
       const { _id, user } = post;
-      history.push(`/@${user.username}/${_id}`);
+      navigate(`/@${user.username}/${_id}`);
     }
     if (postError) {
       console.log(postError);
     }
-  }, [history, post, postError]);
+  }, [navigate, post, postError]);
   return <WriteActionButtons onPublish={onPublish} onCancel={onCancel} />;
 };
 
-export default withRouter(WriteActionButtonsContainer);
+export default WriteActionButtonsContainer;

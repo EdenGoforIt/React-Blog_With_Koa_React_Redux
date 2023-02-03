@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import AvatarWrapper from './AvatarWrapper';
 import React from 'react';
 import profile from '../../../assets/profile.jpg';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AvatarImage = styled.img`
   display: block;
@@ -11,11 +11,15 @@ const AvatarImage = styled.img`
   height: auto;
 `;
 
-const Avatar = ({ size, username, to, history, ...rest }) => {
+const Avatar = ({ size, username, to, ...rest }) => {
+  const navigate = useNavigate();
+
   const onClick = (e) => {
     if (to) {
-      history.push(to);
+      navigate(to);
     }
+
+    // FIXME: test and fix it
     if (rest.onClick) {
       rest.onClick(e);
     }
@@ -27,4 +31,4 @@ const Avatar = ({ size, username, to, history, ...rest }) => {
   );
 };
 
-export default withRouter(Avatar);
+export default Avatar;

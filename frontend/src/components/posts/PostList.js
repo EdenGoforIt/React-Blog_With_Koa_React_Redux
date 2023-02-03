@@ -7,6 +7,7 @@ import Tags from '../common/Tags';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
+// import { useNavigate } from 'react-router-dom';
 
 const PostListBlock = styled(Responsive)`
   margin-top: 3rem;
@@ -20,6 +21,7 @@ const Title = styled.div`
 
 const EditIcon = styled.div`
   margin-left: auto;
+  cursor: pointer;
 `;
 
 const WritePostButtonWrapper = styled.div`
@@ -59,14 +61,18 @@ const PostBody = styled.div`
   font-size: 1rem;
 `;
 const PostItem = ({ post }) => {
+  // const navigate = useNavigate();
   const { publishedDate, user, tags, title, body, _id } = post;
+  const onEditIconClick = (event) => {
+    console.log('event', event);
+  };
   return (
     <PostItemBlock>
       {tags && <Tags tags={tags} />}
       <Title>
         <Link to={`/@${user.username}/${_id}`}>{title}</Link>
       </Title>
-      <EditIcon>
+      <EditIcon onClick={onEditIconClick}>
         <FontAwesomeIcon icon={faPencil} />
       </EditIcon>
 
