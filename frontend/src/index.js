@@ -10,6 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer, { rootSaga } from './modules';
 import { tempSetUser, check } from './modules/user';
+import { Routes, Route } from 'react-router-dom';
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -33,11 +34,15 @@ sagaMiddleware.run(rootSaga);
 loadUser();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  <>
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  </>,
   document.getElementById('root'),
 );
 

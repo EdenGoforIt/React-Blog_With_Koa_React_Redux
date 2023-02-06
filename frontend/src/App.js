@@ -8,18 +8,17 @@ import HeaderContainer from './containers/common/HeaderContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const App = () => {
   return (
-    <>
+    <div className="app">
       <HeaderContainer />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<PostListPage />} path={['/@:username', '/']} exact />
-          <Route element={<LoginPage />} path="/login" />
-          <Route element={<RegisterPage />} path="/register" />
-          <Route element={<WritePage />} path="/write" />
-          <Route element={<PostPage />} path="/@:username/:postId" />
-        </Routes>
-      </BrowserRouter>
-    </>
+      <Routes>
+        <Route element={<PostListPage />} path="/" exact />
+        <Route element={<PostListPage />} path="/@:username" exact />
+        <Route element={<LoginPage />} path="/login" />
+        <Route element={<RegisterPage />} path="/register" />
+        <Route element={<WritePage />} path="/write" />
+        <Route element={<PostPage />} path="/@:username/:postId" />
+      </Routes>
+    </div>
   );
 };
 export default App;
