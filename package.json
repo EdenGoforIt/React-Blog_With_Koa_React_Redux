@@ -1,0 +1,21 @@
+{
+  "name": "react-blog",
+  "version": "1.0.0",
+  "description": "My Personal Blog",
+  "scripts": {
+    "start": "concurrently --kill-others \"cd frontend && npm start\"  \"cd backend && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdenGoforIt/Blog_With_Koa_React_Redux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EdenGoforIt/Blog_With_Koa_React_Redux/issues"
+  },
+  "homepage": "https://github.com/EdenGoforIt/Blog_With_Koa_React_Redux#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
