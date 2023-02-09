@@ -24,7 +24,7 @@ const PostListContainer = () => {
     });
     const { username } = match;
     dispatch(listPosts({ tag, username, page }));
-  }, [dispatch, location.search, match.params]);
+  }, [dispatch, location.search, match, match.params]);
 
   return (
     <PostList
