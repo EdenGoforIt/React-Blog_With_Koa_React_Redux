@@ -12,7 +12,7 @@ const PaginationContainer = () => {
     posts: posts.posts,
     loading: loading['posts/LIST_POSTS'],
   }));
-
+ 
   if (!posts || loading) return null;
 
   const { tag, page = 1 } = qs.parse(location.search, {
