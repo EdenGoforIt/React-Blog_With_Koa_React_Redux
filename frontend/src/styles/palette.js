@@ -25,6 +25,7 @@ const palette = {
     '#0b7285',
   ],
   postBackground: '#252530',
+  danger: '#dc3545',
 };
 
 export default palette;

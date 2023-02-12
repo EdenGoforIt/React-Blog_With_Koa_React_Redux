@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PostViewer from '../../components/post/PostViewer';
 import { readPost, unloadPost } from '../../modules/post';
 import { useNavigate, useParams } from 'react-router-dom';
+import PostActionButtons from '../../components/post/PostActionButtons';
 
 const PostViewerContainer = () => {
   const { postId } = useParams();
@@ -22,7 +23,17 @@ const PostViewerContainer = () => {
     };
   }, [dispatch, postId]);
 
-  return <PostViewer post={post} loading={loading} error={error} />;
+  const onEdit = () => {};
+  const onRemove = () => {};
+
+  return (
+    <PostViewer
+      post={post}
+      loading={loading}
+      error={error}
+      actionButtons={<PostActionButtons onEdit={onEdit} onRemove={onRemove} />}
+    />
+  );
 };
 
 export default PostViewerContainer;
