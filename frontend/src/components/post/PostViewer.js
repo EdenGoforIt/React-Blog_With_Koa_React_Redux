@@ -43,7 +43,6 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
     <PostViewerBlock>
       <PostHead>
         <h1>{title}</h1>
-        {actionButtons}
 
         <SubInfo
           username={user.username}
@@ -52,6 +51,7 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
         />
         <Tags tags={tags} />
       </PostHead>
+      {actionButtons}
 
       <PostContent dangerouslySetInnerHTML={{ __html: body }} />
     </PostViewerBlock>
