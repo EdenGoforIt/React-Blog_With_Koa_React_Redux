@@ -63,19 +63,13 @@ const PostBody = styled.div`
 const PostItem = ({ post }) => {
   // const navigate = useNavigate();
   const { publishedDate, user, tags, title, body, _id } = post;
-  const onEditIconClick = (event) => {
-    console.log('event', event);
-  };
+
   return (
     <PostItemBlock>
       {tags && <Tags tags={tags} />}
       <Title>
         <Link to={`/@${user.username}/${_id}`}>{title}</Link>
       </Title>
-      <EditIcon onClick={onEditIconClick}>
-        <FontAwesomeIcon icon={faPencil} />
-      </EditIcon>
-
       <SubInfo
         width={100}
         username={user.username}

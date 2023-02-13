@@ -37,10 +37,10 @@ const ActionIcon = styled.div`
   }
 `;
 
-const PostActionButtons = () => {
+const PostActionButtons = ({ onEdit }) => {
   return (
     <PostActionButtonBlock>
-      <ActionButton>
+      <ActionButton onClick={onEdit}>
         Edit
         <ActionIcon>
           <FontAwesomeIcon icon={faPencil} />
@@ -48,7 +48,7 @@ const PostActionButtons = () => {
       </ActionButton>
       <ActionButton danger>
         Delete
-        <ActionIcon>
+        <ActionIcon onClick={onEdit}>
           <FontAwesomeIcon icon={faTrash} />
         </ActionIcon>
       </ActionButton>
