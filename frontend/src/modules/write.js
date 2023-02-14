@@ -24,17 +24,22 @@ export const writePost = createAction(WRITE_POST, ({ title, body, tags }) => ({
   tags,
 }));
 export const setOriginalPost = createAction(SET_ORIGINAL_POST, (post) => post);
-const updatePost = createAction(UPDATE_POST, ({ id, title, body, tags }) => ({
-  id,
-  title,
-  body,
-  tags,
-}));
+export const updatePost = createAction(
+  UPDATE_POST,
+  ({ id, title, body, tags }) => ({
+    id,
+    title,
+    body,
+    tags,
+  }),
+);
 
 // saga 생성
 const writePostSaga = createRequestSaga(WRITE_POST, postsAPI.writePost);
+const updatePostSaga = createRequestSaga(UPDATE_POST, postsAPI.updatePost);
 export function* writeSaga() {
   yield takeLatest(WRITE_POST, writePostSaga);
+  yield takeLatest(UPDATE_POST, updatePostSaga);
 }
 
 const initialState = {
